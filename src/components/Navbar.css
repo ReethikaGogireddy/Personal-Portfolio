@@ -1,0 +1,118 @@
+/* Navbar.css — subtle white glow on hover for nav links */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  transition: color 180ms ease, text-shadow 200ms ease;
+}
+
+.nav-link { padding-bottom: 0; }
+
+.nav-link:hover,
+.nav-link.active {
+  text-shadow: 0 0 10px rgba(169, 162, 162, 0.85);
+  color: #f7f4f4 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link::after { transition: none; }
+  .nav-link { transition: none; }
+}
+
+/* Hide mobile on desktop */
+.nav-mobile {
+  display: none;
+}
+
+/* ---------------- MOBILE ---------------- */
+@media (max-width: 768px) {
+
+  .nav-desktop {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+  }
+
+  /* Hamburger Button */
+  .hamburger-btn {
+    background: transparent;
+    border: 2px solid rgba(250, 204, 21, 0.5);
+    border-radius: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+  }
+
+  .hamburger {
+    display: inline-block;
+    width: 22px;
+    height: 2px;
+    background: #facc15;
+    position: relative;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 2px;
+    background: #facc15;
+    left: 0;
+  }
+
+  .hamburger::before {
+    top: -7px;
+  }
+
+  .hamburger::after {
+    top: 7px;
+  }
+
+  /* FULL SCREEN OVERLAY */
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 15, 35, 0.98);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: fadeIn 0.25s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Close button */
+  .mobile-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: transparent;
+    border: 2px solid rgba(250, 204, 21, 0.5);
+    border-radius: 14px;
+    font-size: 22px;
+    color: #facc15;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+
+  /* Menu links */
+  .mobile-menu-content ul {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .mobile-menu-content .nav-link {
+    font-size: 28px;
+    letter-spacing: 4px;
+  }
+}

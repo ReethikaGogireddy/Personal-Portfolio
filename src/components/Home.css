@@ -1,0 +1,243 @@
+/* ---------- base stage ---------- */
+.hero-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* keep your dark theme */
+  --mx: 0;
+  --my: 0;
+  --sx: 50%;
+  --sy: 50%;
+}
+
+/* spotlight that follows cursor: subtle glass-like radial */
+/* .hero-spotlight {
+  position: absolute;
+  left: var(--sx);
+  top: var(--sy);
+  width: 420px;
+  height: 320px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(247, 244, 244, 0.278), rgba(255, 255, 255, 0.146) 40%, transparent 60%);
+  mix-blend-mode: overlay;
+  filter: blur(32px);
+  transition: width 220ms ease, height 220ms ease;
+} */
+
+/* ---------- morphing blob SVG ---------- */
+.morph-blob {
+  position: absolute;
+  right: 10%;
+  top: 8%;
+  width: 560px;
+  height: 420px;
+  z-index: 2;
+  transform: translate3d(0,0,0);
+  transition: transform 300ms ease;
+  pointer-events: none;
+}
+
+/* small reactive transform so it appears to move with cursor (use CSS var) */
+.morph-blob g {
+  transform: translate3d(calc(var(--mx) * 20px), calc(var(--my) * 10px), 0);
+  transition: transform 220ms linear;
+}
+
+/* ---------- profile card ---------- */
+.profile-wrap {
+  position: absolute;
+  right: 8%;
+  top: 18%;
+  z-index: 30;
+  will-change: transform;
+}
+.profile-ring {
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  padding: 6px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.95));
+  box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 8px 24px rgba(0,0,0,0.5);
+  transition: transform 450ms cubic-bezier(.2,.9,.3,1), box-shadow 350ms;
+  transform-origin: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  object-fit: cover;
+  display: block;
+  transform: translateZ(0);
+  transition: transform 420ms cubic-bezier(.2,.9,.3,1);
+  will-change: transform;
+}
+.profile-ring:hover {
+  transform: translateY(-14px) rotate(-2deg) scale(1.03);
+  box-shadow: 0 54px 100px rgba(0,0,0,0.75);
+}
+
+/* ---------- hero content (left) ---------- */
+.hero-content {
+  position: absolute;
+  left: 6%;
+  top: 22%;
+  width: 55%;
+  z-index: 1;
+  color: #f5f5f5;
+  padding-right: 2rem;
+  
+}
+
+/* heading layout */
+.hero-heading {
+  font-family: "Playfair Display", serif; /* load it or keep your font */
+  font-size: clamp(2.4rem, 5vw, 4.6rem);
+  line-height: 1.02;
+  /* stacked heading: first line (greeting) then name on next line */
+  display: block;
+}
+
+/* ensure the two heading lines occupy their own rows */
+.hero-heading .line-one,
+.hero-heading .line-two .line-three {
+  display: block;
+  width: 100%;
+}
+.hero-heading .line-two .line-three {
+  margin-top: 0.25rem;
+}
+
+/* greeting & wave */
+.greeting { opacity: 0.95; color: #ffffff; font-weight: 700; margin-right: 0.4rem; }
+.wave { font-size: 2rem; margin-right: 0.3rem; transform: translateY(2px); }
+
+/* per-letter animated gradient (unique look) */
+.animated-name { display: inline-block; white-space: pre; margin-left: 0.3rem; }
+.animated-name  {
+  background: linear-gradient(
+    90deg,
+    rgb(255, 236, 192),
+    rgb(255, 194, 155),
+    rgb(243, 159, 159),
+    rgb(185, 94, 130)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  transform-origin: center;
+  /* staggered entrance using --i */
+  transform: translateY(18px) rotateX(8deg) translateZ(0);
+  opacity: 0;
+  animation: letterIn 720ms cubic-bezier(.2,.9,.3,1) forwards;
+  animation-delay: calc(var(--i) * 60ms);
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  will-change: transform, opacity;
+}
+
+/* subtle 3D parallax per letter based on mouse vars (different multipliers) */
+.hero-stage .animated-name .letter {
+  transform: translate3d(calc(var(--mx) * var(--i) * 0.6px), calc(var(--my) * var(--i) * 0.25px), 0);
+}
+
+/* keyframes */
+@keyframes letterIn {
+  to {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
+  }
+}
+
+/* subtext */
+.hero-sub {
+  margin-top: 1.6rem;
+  font-size: 1.05rem;
+  color: rgba(245,245,245,0.9);
+  max-width: 70%;
+  
+}
+.italicized { color: #A7E399; font-style: italic; font-weight: 600; }
+
+/* actions */
+.hero-actions { margin-top: 2rem; display:flex; gap:1rem; }
+.cta {
+  display:inline-block; padding:0.75rem 1.2rem; border-radius:999px;
+  background: #6b6bff; color:#ffffff; font-weight:700; text-decoration:none;
+  box-shadow: 0 10px 30px rgba(107,107,255,0.14);
+  transform: translateZ(0);
+}
+.cta:hover {
+  background: #5959e6;
+  box-shadow: 0 14px 40px rgba(89,89,230,0.2);
+}
+.ghost, .resume-cta {
+  display:inline-block; padding:0.65rem 1rem; border-radius:999px;
+  background: transparent; color:#e3dcdc; border:1px solid rgba(255, 255, 255, 0.494); text-decoration:none;
+}
+.ghost:hover , .resume-cta:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* typing line small */
+.typing-line { margin-top: 1.8rem; color:#F8F7BA; font-family: monospace; font-size:1.05rem; }
+.cursor { color:#FFD84D; animation: blink 1s steps(2,start) infinite; }
+@keyframes blink { to { visibility: hidden } }
+
+/* responsive */
+@media (max-width: 1100px) {
+  .hero-content { width: 62%; left: 4%; top: 18%; }
+  .morph-blob { width: 420px; height: 320px; right: 6%; top: 6%; }
+  .profile-ring { width: 200px; height: 200px; }
+}
+@media (max-width: 720px) {
+  .hero-content { width: 90%; left: 5%; top: 12%; }
+  .morph-blob, .hero-spotlight, .profile-wrap { display: none; } /* hide decorative parts for small screens */
+  .hero-heading { font-size: 2.4rem; }
+}
+
+
+.hero-stage {
+  background: transparent !important;
+}
+
+
+.blob-secondary {
+  right: 62%;
+  top: 52%;
+  width: 420px;
+  height: 300px;
+  z-index: 0;
+  opacity: 0.6;
+  filter: blur(34px);
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+/* warm accent blob */
+.blob-warm {
+  right: 20%;
+  top: 60%;
+  width: 460px;
+  height: 320px;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(36px);
+  opacity: 0.55;
+  transform: rotate(-14deg);
+}
+
+
+.iam {
+  opacity: 0.50;
+}
+.greeting
+{
+  opacity: 0.50;
+}
+.greeting .cta .iam {
+  font-weight: 700;
+}
