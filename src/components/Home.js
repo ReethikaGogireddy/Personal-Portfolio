@@ -1,7 +1,6 @@
 import "./Home.css";
 import { useState, useEffect, useRef } from "react";
 import { Element, scroller } from "react-scroll";
-import profileImg from "../assets/profile.jpeg";
 
 
 const AnimatedName = ({ text }) => {

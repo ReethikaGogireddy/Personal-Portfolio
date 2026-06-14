@@ -1,10 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import serverlogsoc from "../assets/serverlogsoc.png";
-import secureheathchain from "../assets/SecureHealthChain.png";
-import forgery from "../assets/forgery.png";
-import dashboard from "../assets/dashboard.png";
-import moodsync from "../assets/moodsync.png";
-import underdevelopment from "../assets/underdevelopment.png";
 import imagenotavail from "../assets/imagenotavail.png";
 const projects = [
   {
