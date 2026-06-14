@@ -274,7 +274,7 @@ const Home = () => {
     className="cta"
     onClick={() =>
       window.open(
-        "https://drive.google.com/file/d/1siPvS8eBVdchyxmIZXc5G0lR5nvlkQiF/view?usp=sharing",
+        "https://drive.google.com/file/d/1FA9pA5iTrsrkPZsS98JaEPB1nDyE1tPd/view?usp=drive_link",
         "_blank",
         "noopener,noreferrer"
       )
