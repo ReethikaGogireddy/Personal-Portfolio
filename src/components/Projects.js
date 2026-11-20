@@ -1,41 +1,58 @@
 import React, { useState, useRef, useEffect } from "react";
-import serverlogsoc from "../assets/serverlogsoc.png";
 import imagenotavail from "../assets/imagenotavail.png";
+
 const projects = [
   {
     id: 1,
-    title: "ServerLogSOC",
-    image: serverlogsoc,
-    short: "Server Logs Analytics with ML.",
+    title: "SentinelAI",
+    image: imagenotavail,
+    short: "AI-Powered Privacy Policy Analyzer.",
     description:
-      "AI-powered SOC dashboard that analyzes server logs, detects threats using rule-based and Random Forest models, and provides actionable security insights.",
-    tech: ["React", "Node.js", "Flask", "Machine Learning","Analytics"],
+      "An AI-powered privacy policy analyzer that extracts text and identifies high-risk permissions such as camera, microphone, location, and clipboard access. Built with a clause-level document processing pipeline and an LLM guidance layer.",
+    bullets: [
+      "Built an AI-powered privacy policy analyzer that extracts text and identifies high-risk permissions such as camera, microphone, location, and clipboard access.",
+      "Developed a document processing pipeline for PDF, URL, and text inputs with text extraction and clause-level segmentation.",
+      "Implemented rule-based and NLP-driven permission detection, risk assessment, and prioritized alert generation using REST APIs.",
+      "Integrated an LLM-based guidance layer to generate user-friendly explanations and recommendations for detected privacy risks.",
+    ],
+    tech: ["React", "FastAPI", "Python", "NLP", "LLMs", "REST APIs", "Docker"],
     color: "#FF6B6B",
-    link: "https://serverlogsoc.web.app/",
+    link: "https://github.com/SiddharthGogireddy/SentinelAI",
   },
   {
-  id: 2,
-  title: "AI Interview Simulator",
-  image: imagenotavail,
-  short: "Personalized AI-powered interview practice.",
-  description:
-    "A RAG-powered interview preparation platform that generates personalized technical and behavioral interview questions from uploaded resumes, enabling realistic mock interviews with AI-driven feedback.",
-  tech: ["Next.js", "Node.js", "PostgreSQL", "LLMs", "RAG"],
-  color: "#FFE66D",
-  link: "https://github.com/SiddharthGogireddy/ai-interview-simulator",
-},
+    id: 2,
+    title: "AI Interview Simulator",
+    image: imagenotavail,
+    short: "Personalized AI-powered interview practice.",
+    description:
+      "A RAG-powered interview preparation platform that generates personalized technical and behavioral interview questions from uploaded resumes, enabling realistic mock interviews with AI-driven feedback.",
+    bullets: [
+      "Built an AI interview platform generating personalized technical and behavioral questions from uploaded resumes.",
+      "Developed a RAG pipeline using resume chunking, embeddings, and semantic search for context-aware interactions.",
+      "Implemented resume upload, PDF extraction, storage, and backend APIs for interview sessions, question generation, and response evaluation.",
+      "Integrated LLMs to deliver real-time interview feedback.",
+    ],
+    tech: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "LLMs", "RAG"],
+    color: "#FFE66D",
+    link: "https://github.com/SiddharthGogireddy/ai-interview-simulator",
+  },
   {
-  id: 3,
-  title: "ATS Friendly Resume Builder",
-  image: imagenotavail,
-  short: "Build and optimize ATS-friendly resumes.",
-  description:
-    "A full-stack resume builder that enables users to create, manage, and analyze resumes with ATS compatibility scoring, keyword matching, resume parsing, and version management.",
-  tech: ["Next.js", "Node.js", "PostgreSQL", "Prisma"],
-  color: "#4ECDC4",
-  link: "https://github.com/SiddharthGogireddy/Ats-builder",
-},
- 
+    id: 3,
+    title: "TravelSync AI",
+    image: imagenotavail,
+    short: "AI-Powered Personalized Travel Planner.",
+    description:
+      "An AI-powered travel planning platform that generates personalized trip itineraries based on user preferences, destinations, and budgets with intelligent recommendations, route planning, and day-wise scheduling.",
+    bullets: [
+      "Built an AI-powered travel planning platform that generates personalized trip itineraries based on user preferences, destinations, and budgets.",
+      "Implemented intelligent recommendations for tourist attractions, hotels, restaurants, and transportation.",
+      "Developed features for route planning, budget estimation, weather updates, and day-wise trip scheduling.",
+      "Integrated external APIs and AI-driven recommendations to deliver context-aware travel suggestions.",
+    ],
+    tech: ["Next.js", "React", "FastAPI", "Python", "AI/LLMs", "Maps API", "Weather API"],
+    color: "#4ECDC4",
+    link: "https://github.com/SiddharthGogireddy/TravelSync-AI",
+  },
 ];
 
 const Projects = () => {
@@ -110,6 +127,13 @@ const Projects = () => {
                 <div className="flex-1">
                   <h3 className="text-3xl font-bold text-white mb-4">{selected.title}</h3>
                   <p className="text-gray-300 mb-4 leading-relaxed">{selected.description}</p>
+                  {selected.bullets && (
+                    <ul className="list-disc list-inside text-gray-300 text-sm mb-4 space-y-1.5">
+                      {selected.bullets.map((bullet, idx) => (
+                        <li key={idx} className="leading-relaxed">{bullet}</li>
+                      ))}
+                    </ul>
+                  )}
                   <p className="text-sm text-gray-400 mb-6">
                     <strong>Tech Stack:</strong> {selected.tech.join(", ")}
                   </p>

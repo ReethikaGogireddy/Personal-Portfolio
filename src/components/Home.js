@@ -251,10 +251,6 @@ const Home = () => {
         {/* Left content */}
         <div className="hero-content">
           <h1 className="hero-heading">
-    <div className="line-one">
-      <span className="wave" aria-hidden="true">👋</span>
-    </div>
-
     <div className="line-two">
       <span className="iam">I am</span> {" "}
     </div>
@@ -274,7 +270,7 @@ const Home = () => {
     className="cta"
     onClick={() =>
       window.open(
-        "https://drive.google.com/file/d/1FA9pA5iTrsrkPZsS98JaEPB1nDyE1tPd/view?usp=drive_link",
+        `${process.env.PUBLIC_URL}/resume.pdf`,
         "_blank",
         "noopener,noreferrer"
       )

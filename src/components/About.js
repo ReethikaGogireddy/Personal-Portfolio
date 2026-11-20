@@ -37,10 +37,10 @@ data analytics and AI-driven feature development.</li>
 const EducationContent = () => (
   <div className="space-y-6">
     <div className="reveal-child" data-order="0">
-      <h3 className="text-base font-semibold text-white/90">Bachelor's of Technology in Computer Science (AI and ML Specialization)</h3>
-      <p className="text-xs text-gray-400">Jawaharlal Nehru Technological University · 2023 – Present</p>
-      <p className="mt-2 text-gray-300">Coursework: Data Structures and Algorithms, Databases, Web Development, Software Engineering.</p>
-      <p className="mt-1 text-gray-300 font-semibold">CGPA</p>
+      <h3 className="text-base font-semibold text-white/90">B.Tech in Computer Science and Engineering (AI & ML)</h3>
+      <p className="text-xs text-gray-400">Jawaharlal Nehru Technological University, Hyderabad (JNTUH) · Sept 2023 - June 2027</p>
+      <p className="mt-2 text-gray-300">Coursework: Machine Learning, Data Structures and Algorithms, DBMS, Operating Systems, Computer Networks</p>
+      <p className="mt-1 text-gray-300 font-semibold">CGPA: 8.3 / 10</p>
     </div>
   </div>
 );
@@ -251,12 +251,12 @@ export default function About() {
               <ul className="space-y-2 text-gray-300 text-sm">
                 <li>
                   <a href="https://www.linkedin.com/in/siddharth-gogireddy-67b427298/" target="_blank" rel="noreferrer" className="hover:text-white transition">
-                    🔗 LinkedIn
+                    LinkedIn
                   </a>
                 </li>
                 <li>
                   <a href="https://github.com/SiddharthGogireddy" target="_blank" rel="noreferrer" className="hover:text-white transition">
-                    💻 GitHub
+                    GitHub
                   </a>
                 </li>
               </ul>
